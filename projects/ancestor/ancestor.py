@@ -18,10 +18,10 @@ def earliest_ancestor(ancestors, starting_node):
         graph.add_edge(pair[1], pair[0])
     earliestAncestor = -1
     maxLength = 1
-    q = Queue()
-    q.enqueue([starting_node])
-    while q.size() > 0:
-        path = q.dequeue()
+    queue = Queue()
+    queue.enqueue([starting_node])
+    while queue.size() > 0:
+        path = queue.dequeue()
         vertex = path[-1]
         if (len(path) >= maxLength and earliestAncestor != -1) or (len(path) > maxLength):
             earliestAncestor = vertex
@@ -29,5 +29,5 @@ def earliest_ancestor(ancestors, starting_node):
         for neighbor in graph.vertices[vertex]:
             path_copy = list(path)
             path_copy.append(neighbor)
-            q.enqueue(path_copy)
+            queue.enqueue(path_copy)
     return earliestAncestor
